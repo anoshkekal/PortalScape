@@ -1,0 +1,19 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class loadNextScene : MonoBehaviour
+{
+   [SerializeField] float loadDelay = 0f;
+    void OnTriggerEnter2D(Collider2D other) {
+        if(other.tag== "Player"){
+            Invoke("ReloadScene",loadDelay);
+        }    
+    }
+
+    void ReloadScene(){
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex+1);
+    }
+}
